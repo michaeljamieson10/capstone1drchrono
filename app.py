@@ -55,14 +55,30 @@ def list_doctor():
 
     # This returns a 401
 
+    # import pdb; pdb.set_trace()
     response = requests.get('https://app.drchrono.com/api/doctors', data={
         'access_token': session['access_token'],
     })
-    # response = requests.get('https://app.drchrono.com/api/billing')
+    response.raise_for_status()
+    print(session['access_token'])
     raise
     return jsonify(response)
 
-    
+@app.route("/patients")
+def list_patients():
+    """Will list patients"""
+
+    # This returns a 401
+
+    # import pdb; pdb.set_trace()
+    response = requests.get('https://app.drchrono.com/api/patients', data={
+        'access_token': session['access_token'],
+    })
+    response.raise_for_status()
+    print(session['access_token'])
+    raise
+    return jsonify(response)
+
 @app.route("/patient_create")
 def create_pt():
     """Will create patients """
