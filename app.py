@@ -56,13 +56,14 @@ def list_doctor():
 def user():
     """Will list current user"""
     # This returns a 401
+    access_token = session['access_token']
     url = "https://drchrono.com/api/users/current"
 
     payload = {}
     headers = {
-    'Authorization': 'Bearer your_access_token_here',
+    'Authorization': access_token,
     }
-
+    # raise
     response = requests.request("GET", url, headers=headers, data = payload)
 
     print(response.text.encode('utf8'))
