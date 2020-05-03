@@ -98,11 +98,11 @@ def list_medications():
     response = requests.get(url, headers=header_create(),data=json.dumps(body))
     response.raise_for_status()
     data = response.json()
-    # raise
     url = "https://app.drchrono.com/api/patients"
     response = requests.get(url, headers=header_create())
     response.raise_for_status()
     patient_data = response.json()
+    raise
     return render_template("medications.html",data=data['results'], patient_data=patient_data['results'], access_token=session['access_token'])
 
 @app.route("/patients/<patient_id>")
@@ -120,9 +120,9 @@ def create_pt():
     url = "https://app.drchrono.com/api/patients"
     body = {
         'doctor': 266342,
-        'first_name': 'Michaelas',
-        'last_name': 'Jamiesonas',
-        'date_of_birth': '1995-03-31',
+        'first_name': 'John',
+        'last_name': 'Jamieson',
+        'date_of_birth': '1997-03-31',
         'gender': 'Male'
     }
 
