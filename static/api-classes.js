@@ -1,18 +1,18 @@
+// 'Access-Control-Allow-Origin': '*'
+// 'Access-Control-Allow-Credentials': true,
 const BASE_URL = "https://app.drchrono.com/api";
 
-async function getPatientId(patient) {
-  
+async function getPatientId(patient_id) {
+  console.log(patient_id,"patient_id")
   const headers = {
     'headers':{
-      'Authorization':`Bearer ${access_token}`, 
-      'Content-type':"application/json",
-      'Access-Control-Allow-Origin': 'http://127.0.0.1:5000',
-      'Access-Control-Allow-Credentials': true
-      }
+      "Authorization":`Bearer ${access_token}`, 
+      "Content-type":"application/json"
+    }
   }
-  const response = await axios.get(`${BASE_URL}/medications`,{
-    patient: patient
-  },headers)
-  // patient is patient_id
+  const patient = {"data":{
+    "patient": patient_id
+  }}
+  const response = await axios.get(`https://cors-anywhere.herokuapp.com/${BASE_URL}/medications`,headers,patient)
   console.log(response)
 };

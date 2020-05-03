@@ -2,9 +2,12 @@ from flask import Flask, render_template, request, redirect, jsonify, make_respo
 import requests
 import datetime
 import json
+# from flask_cors import CORS, cross_origin 
 app = Flask(__name__)
-
+# CORS(app)
 app.config["SECRET_KEY"] = "SSHH SECRETO"
+
+
 
 def header_create():
     access_token = session['access_token']
@@ -89,13 +92,14 @@ def list_medications():
     """Will list medications with patients in side bar menu"""
     url = "https://app.drchrono.com/api/medications"
     body = {
-        'patient' : 87214300
+        "doctor": 266342,
+        "patient" : 87214300
     }
     response = requests.get(url, headers=header_create(),data=json.dumps(body))
     response.raise_for_status()
     data = response.json()
+    # raise
     url = "https://app.drchrono.com/api/patients"
-    
     response = requests.get(url, headers=header_create())
     response.raise_for_status()
     patient_data = response.json()
