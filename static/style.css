@@ -1,0 +1,26 @@
+#profile-avatar {
+    width: 200px;
+    height: 200px;
+    border: 5px solid #fff;
+    position: relative;
+    box-shadow: 0 1px 1px rgba(136, 153, 166, 0.15);
+  }
+.patient_medication_profile {
+  width: 80px;
+  height: 80px;
+}
+.page {
+  display: grid;
+  grid-template-columns: 30vw;
+  width:100%;
+} 
+
+#sidebar {
+  height: 1200px;
+  position: fixed;
+  overflow: auto;
+  width: 400px;
+}
+.main {
+  grid-column-start: 2;
+}
